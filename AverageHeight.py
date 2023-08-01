@@ -1,6 +1,6 @@
 heights = input("Input a list of height separated by a space: (cm) ").split()
 
-heights = [int(n) for n in heights]
+heights = [int(height) for height in heights]
 # print(heights)
 # print(len(heights))
 
