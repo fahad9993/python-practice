@@ -9,6 +9,8 @@ Learning started: ![Started On](https://img.shields.io/badge/27%20July%202023-11
 >Empty your mind, be formless, shapeless like water...
 
 ```python
-def proLearner ():
+
+def pro_learner():
     return "Consistently keeping up with the goal."
+
 ```
