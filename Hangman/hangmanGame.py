@@ -3,7 +3,9 @@ import hangman_art
 import hangman_words
 
 selected_word = random.choice(hangman_words.word_list)
-print(selected_word)
+print(hangman_art.logo)
+# Testing code
+print(f'Pssst, the solution is {selected_word}.')
 
 printed_word = []
 lives = 6
