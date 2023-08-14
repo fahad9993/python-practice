@@ -7,26 +7,14 @@ shift = int(input("Type the shift number:\n"))
 
 
 def caesar(txt, sft, choice):
-    encoded_text = ""
-    decoded_text = ""
-    if choice == "encrypt":
-        for letter in txt:
-            letter_index = alphabet.index(letter)
-            shift_index = letter_index + sft
-            if shift_index >= 26:
-                shift_index -= 26
-            encoded_text += alphabet[shift_index]
-            # print(encoded_text)
-        print(f"Encoded text is:\n{encoded_text}")
-    else:
-        for letter in txt:
-            letter_index = alphabet.index(letter)
-            shift_index = letter_index - sft
-            if shift_index >= 26:
-                shift_index -= 26
-            decoded_text += alphabet[shift_index]
-            # print(encoded_text)
-        print(f"Decoded text is:\n{decoded_text}")
+    end_text = ""
+    if choice == "decode":
+        sft *= -1
+    for letter in txt:
+        letter_index = alphabet.index(letter)
+        shift_index = letter_index + sft
+        end_text += alphabet[shift_index]
+    print(f"{choice.capitalize()}d text is:\n{end_text}")
 
 
 caesar(txt=text, sft=shift, choice=direction)
