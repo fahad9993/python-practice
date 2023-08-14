@@ -14,8 +14,8 @@ def caesar(txt, sft, choice):
     sft %= 26
     if choice == "decode":
         sft *= -1
-    for letter in txt:
-        letter_index = alphabet.index(letter)
+    for char in txt:
+        letter_index = alphabet.index(char)
         shift_index = letter_index + sft
         end_text += alphabet[shift_index]
     print(f"{choice.capitalize()}d text is:\n{end_text}")
