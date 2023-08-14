@@ -11,6 +11,7 @@ shift = int(input("Type the shift number:\n"))
 
 def caesar(txt, sft, choice):
     end_text = ""
+    sft %= 26
     if choice == "decode":
         sft *= -1
     for letter in txt:
