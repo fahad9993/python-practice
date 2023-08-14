@@ -7,10 +7,10 @@ shift = int(input("Type the shift number:\n"))
 
 
 # TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
-def encrypt(txt, sft):
+def caesar(txt, sft, choice):
     encoded_text = ""
     decoded_text = ""
-    if direction == "encrypt":
+    if choice == "encrypt":
         for letter in txt:
             letter_index = alphabet.index(letter)
             shift_index = letter_index + sft
@@ -30,7 +30,7 @@ def encrypt(txt, sft):
         print(f"Decoded text is:\n{decoded_text}")
 
 
-encrypt(txt=text, sft=shift)
+caesar(txt=text, sft=shift, choice=direction)
 # TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount
 #  and print the encrypted text. e.g. plain_text = "hello" shift = 5 cipher_text = "mjqqt" print output: "The encoded
 #  text is mjqqt"
