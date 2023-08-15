@@ -1,7 +1,7 @@
 from art import logo
 
 print(logo)
-bidder_info = []
+bidder_info = {}
 
 print("Welcome to the secret auction program.")
 
@@ -11,11 +11,10 @@ def highest_bidder(bidder_information):
     max_bidder_name = ""
 
     for bidder in bidder_information:
-        next_bidder_amount = bidder["amount"]
-        next_bidder_name = bidder["name"]
+        next_bidder_amount = bidder_information[bidder]
         if next_bidder_amount > max_bidder_amount:
             max_bidder_amount = next_bidder_amount
-            max_bidder_name = next_bidder_name
+            max_bidder_name = bidder
 
     print(f"The winner is {max_bidder_name} with a bid of ${max_bidder_amount}.")
 
@@ -25,11 +24,7 @@ while run_again:
     bidder_name = input("What is your name?: ")
     bid_amount = int(input("What is your bid?: $"))
 
-    new_bidder = {
-        "name": bidder_name,
-        "amount": bid_amount,
-    }
-    bidder_info.append(new_bidder)
+    bidder_info[bidder_name] = bid_amount
 
     user_input = input("Are there any other bidders? Type 'yes' or 'no'. ").lower()
     if user_input == "no":
