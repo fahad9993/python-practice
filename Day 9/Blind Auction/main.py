@@ -39,4 +39,4 @@ while run_again:
 
         os.system('cls')
 
-print(bidder_info)
+# print(bidder_info)
