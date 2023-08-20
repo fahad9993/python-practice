@@ -11,6 +11,13 @@ while play:
     if play_again == "n":
         play = False
     else:
+        # Clearing the console
+        # For this to work you should enable "Emulate terminal in output console"
+        # from Run>Edit Configurations>Add new>Python>Modify option>Emulate terminal in output console
+        # Then selecting the script path
+        import os
+        os.system('cls')
+
         your_cards = random.choices(cards, k=2)
         current_score = sum(your_cards)
         if current_score > 21 and 11 in your_cards:
