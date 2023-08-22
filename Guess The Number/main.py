@@ -4,10 +4,12 @@ import os
 
 
 def random_number():
+    """Generates a random number between 1 and 100."""
     return random.randint(1, 100)
 
 
 def lives_remaining(lives, answer):
+    """Generates custom print messages based on remaining lives and random number, which is guessed."""
     if lives == 0:
         print("You have ran out of guesses. You lose.")
         print(f"The correct answer is {answer}.")
@@ -17,6 +19,8 @@ def lives_remaining(lives, answer):
 
 
 def guess_number():
+    """Ask the player to choose easy or hard mode. After that receives guess from the player.
+    Also, checks the answer with the guess."""
     print(logo)
     print("Welcome to the Number Guessing Game.")
     print("I am thinking of a number between 1 and 100.")
