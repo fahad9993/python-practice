@@ -25,14 +25,14 @@ def guess_number():
     print("Welcome to the Number Guessing Game.")
     print("I am thinking of a number between 1 and 100.")
     answer = random_number()
-    print(f"Psst, the correct answer is {answer}.")
+    # print(f"Psst, the correct answer is {answer}.")
 
     difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
     if difficulty == "easy":
         lives = 10
     else:
         lives = 5
-
+    print(f"You have {lives} attempts remaining to make the correct guess.")
     while lives > 0:
         guessed_number = int(input("Make a guess: "))
         if guessed_number == answer:
