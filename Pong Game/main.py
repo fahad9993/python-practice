@@ -46,4 +46,12 @@ while is_game_on:
         ball.reset_position()
         scoreboard.r_point()
 
+    scoreboard.show_winner()
+    if scoreboard.show_winner():
+        is_game_on = False
+        if scoreboard.restart().lower() == "y":
+            # ball.reset_position()
+            scoreboard.update_scoreboard()
+            is_game_on = True
+
 screen.exitonclick()
