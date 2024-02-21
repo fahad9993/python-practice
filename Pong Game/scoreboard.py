@@ -1,5 +1,5 @@
 from turtle import Turtle
-WINNING_SCORE = 2
+WINNING_SCORE = 10
 
 
 class Scoreboard(Turtle):
