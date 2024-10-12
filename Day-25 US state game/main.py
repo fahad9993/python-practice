@@ -25,6 +25,9 @@ guessed_states = []
 while len(guessed_states) < 50:
     answer_state = turtle.textinput(title=f"{len(guessed_states)}/50 States correct", prompt="What's another state's "
                                                                                              "name?").title()
+
+    if answer_state == "Exit":
+        break
     # Getting the x and y coordinate by matching state
     answer_state_x = int(data[data.state == answer_state].x.iloc[0])
     answer_state_y = int(data[data.state == answer_state].y.iloc[0])
@@ -37,6 +40,3 @@ while len(guessed_states) < 50:
         t.penup()
         t.goto(answer_state_x, answer_state_y)
         t.write(answer_state, align="center", font=FONT)
-
-
-screen.exitonclick()
