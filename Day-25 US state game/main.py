@@ -20,16 +20,18 @@ turtle.shape(image)
 
 data = pandas.read_csv("50_states.csv")
 all_states = data["state"].tolist()
+guessed_states = []
 
-game_is_on = True
-while game_is_on:
-    answer_state = turtle.textinput(title="Guess the State", prompt="What's another state's name?")
+while len(guessed_states) < 50:
+    answer_state = turtle.textinput(title=f"{len(guessed_states)}/50 States correct", prompt="What's another state's "
+                                                                                             "name?").title()
     # Getting the x and y coordinate by matching state
     answer_state_x = int(data[data.state == answer_state].x.iloc[0])
     answer_state_y = int(data[data.state == answer_state].y.iloc[0])
-    print(f"x: {answer_state_x}, y: {answer_state_y}")
+    # print(f"x: {answer_state_x}, y: {answer_state_y}")
 
     if answer_state in all_states:
+        guessed_states.append(answer_state)
         t = turtle.Turtle()
         t.hideturtle()
         t.penup()
