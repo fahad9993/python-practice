@@ -27,6 +27,12 @@ while len(guessed_states) < 50:
                                                                                              "name?").title()
 
     if answer_state == "Exit":
+        missing_states = []
+        for state in all_states:
+            if state not in guessed_states:
+                missing_states.append(state)
+        missing_data = pandas.Series(missing_states)
+        missing_data.to_csv("states_to_learn.csv")
         break
     # Getting the x and y coordinate by matching state
     answer_state_x = int(data[data.state == answer_state].x.iloc[0])
