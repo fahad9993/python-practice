@@ -5,7 +5,12 @@ window.minsize(width=400, height=50)
 window.title("Mile to Km Converter")
 window.config(padx=50, pady=50)
 
-mile = Entry()
+# Configure the grid to have 3 columns with equal weight
+window.grid_columnconfigure(0, weight=1)
+window.grid_columnconfigure(1, weight=1)
+window.grid_columnconfigure(2, weight=1)
+
+mile = Entry(width=7)
 mile.focus()
 mile.grid(column=1, row=0)
 
@@ -21,7 +26,7 @@ txt1.grid(column=2, row=0)
 txt2 = Label(text="is equal to")
 txt2.grid(column=0, row=1)
 
-km_txt = Label()
+km_txt = Label(text=0)
 km_txt.grid(column=1, row=1)
 
 txt3 = Label(text="Km")
