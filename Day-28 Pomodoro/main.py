@@ -24,10 +24,13 @@ def start_timer():
 
     if reps % 8 == 0:
         countdown(long_break_sec)
+        timer_label.config(text="Break", fg=RED)
     elif reps % 2 == 0:
         countdown(short_break_sec)
+        timer_label.config(text="Break", fg=PINK)
     else:
         countdown(work_sec)
+        timer_label.config(text="Work", fg=GREEN)
 
     reps += 1
 
