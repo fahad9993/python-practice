@@ -1,7 +1,21 @@
 from tkinter import *
+
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+def save_password():
+    website = website_entry.get()
+    username = username_entry.get()
+    password = password_entry.get()
+
+    print(f"Website: {website} | Username: {username} | Password: {password}")
+
+    with open("data.txt", mode="a") as data:
+        data.write(f"{website} | {username} | {password}\n")
+        website_entry.delete(0, END)
+        password_entry.delete(0, END)
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -26,9 +40,11 @@ password_label.grid(column=0, row=3)
 # Entries
 website_entry = Entry(width=52)
 website_entry.grid(column=1, row=1, columnspan=2)
+website_entry.focus()
 
 username_entry = Entry(width=52)
 username_entry.grid(column=1, row=2, columnspan=2)
+username_entry.insert(0, "fahad9993@gmail.com")
 
 password_entry = Entry(width=34)
 password_entry.grid(column=1, row=3)
@@ -37,8 +53,7 @@ password_entry.grid(column=1, row=3)
 gen_pass_button = Button(text="Generate Password")
 gen_pass_button.grid(column=2, row=3)
 
-add_button = Button(text="Add", width=44)
+add_button = Button(text="Add", width=44, command=save_password)
 add_button.grid(column=1, row=4, columnspan=2)
-
 
 window.mainloop()
