@@ -1,8 +1,27 @@
 from tkinter import *
 from tkinter import messagebox
+from random import choice, randint, shuffleC
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+def generate_password():
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+               'v',
+               'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+               'R',
+               'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+    password_list = ([choice(letters) for _ in range(randint(8, 10))] +
+                     [choice(symbols) for _ in range(randint(2, 4))] +
+                     [choice(numbers) for _ in range(randint(2, 4))])
+
+    shuffle(password_list)
+    my_password = "".join(password_list)
+    password_entry.delete(0, END)
+    password_entry.insert(0, my_password)
+
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
@@ -10,7 +29,6 @@ def save_password():
     username = username_entry.get()
     password = password_entry.get()
 
-    # print(f"Website: {website} | Username: {username} | Password: {password}")
     if len(website) == 0 or len(username) == 0 or len(password) == 0:
         messagebox.showwarning(title="Oops!!!", message="Please don't leave any field empty!")
 
@@ -57,7 +75,7 @@ password_entry = Entry(width=34)
 password_entry.grid(column=1, row=3)
 
 # Buttons
-gen_pass_button = Button(text="Generate Password")
+gen_pass_button = Button(text="Generate Password", command=generate_password)
 gen_pass_button.grid(column=2, row=3)
 
 add_button = Button(text="Add", width=44, command=save_password)
