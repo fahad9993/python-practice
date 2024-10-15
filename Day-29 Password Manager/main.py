@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from random import choice, randint, shuffleC
+from random import choice, randint, shuffle
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
