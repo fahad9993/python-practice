@@ -16,6 +16,8 @@ now = dt.datetime.now()
 day_today = now.day
 month_today = now.month
 
+data = pandas.read_csv("birthdays.csv")
+
 for (index, row) in data.iterrows():
     letter_no = random.randint(1, 3)
     print(letter_no)
