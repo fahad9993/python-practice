@@ -3,6 +3,7 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 import smtplib
+import time
 
 MY_LAT = 23.810331  # Your latitude
 MY_LONG = 90.412521  # Your longitude
@@ -48,12 +49,15 @@ def is_night():
         return True
 
 
-if is_iss_overhead() and is_night():
-    with smtplib.SMTP(SMTP_SERVER) as connection:
-        connection.starttls()
-        connection.login(user=MY_EMAIL, password=PASSWORD)
-        connection.sendmail(
-            from_addr=MY_EMAIL,
-            to_addrs=TO_EMAIL,
-            msg="Subject:ISS is overhead!\n\nHey, Look out! The ISS is over your city. You can look for it in the sky."
-        )
+while True:
+    time.sleep(60)
+    if is_iss_overhead() and is_night():
+        with smtplib.SMTP(SMTP_SERVER) as connection:
+            connection.starttls()
+            connection.login(user=MY_EMAIL, password=PASSWORD)
+            connection.sendmail(
+                from_addr=MY_EMAIL,
+                to_addrs=TO_EMAIL,
+                msg="Subject:ISS is overhead!\n\n"
+                    "Hey, Look out! The ISS is over your city. You can look for it in the sky."
+            )
