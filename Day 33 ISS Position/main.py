@@ -1,8 +1,14 @@
 import requests
 from datetime import datetime
+import os
+from dotenv import load_dotenv
 
 MY_LAT = 23.810331  # Your latitude
 MY_LONG = 90.412521  # Your longitude
+
+load_dotenv()
+MY_EMAIL = os.getenv("MY_EMAIL")
+PASSWORD = os.getenv("PASSWORD")
 
 parameters = {
     "lat": MY_LAT,
