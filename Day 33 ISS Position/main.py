@@ -2,13 +2,16 @@ import requests
 from datetime import datetime
 import os
 from dotenv import load_dotenv
+import smtplib
 
 MY_LAT = 23.810331  # Your latitude
 MY_LONG = 90.412521  # Your longitude
 
 load_dotenv()
+SMTP_SERVER = "smtp.gmail.com"
 MY_EMAIL = os.getenv("MY_EMAIL")
 PASSWORD = os.getenv("PASSWORD")
+TO_EMAIL = os.getenv("TO_EMAIL")
 
 parameters = {
     "lat": MY_LAT,
@@ -43,3 +46,14 @@ def is_night():
 
     if sunset <= now or now <= sunrise:
         return True
+
+
+if is_iss_overhead() and is_night():
+    with smtplib.SMTP(SMTP_SERVER) as connection:
+        connection.starttls()
+        connection.login(user=MY_EMAIL, password=PASSWORD)
+        connection.sendmail(
+            from_addr=MY_EMAIL,
+            to_addrs=TO_EMAIL,
+            msg="Subject:ISS is overhead!\n\nHey, Look out! The ISS is over your city. You can look for it in the sky."
+        )
