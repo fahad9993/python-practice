@@ -10,7 +10,6 @@ load_dotenv()
 SMTP_SERVER = "smtp.gmail.com"
 MY_EMAIL = os.getenv("MY_EMAIL")
 PASSWORD = os.getenv("PASSWORD")
-TO_EMAIL = os.getenv("TO_EMAIL")
 
 now = dt.datetime.now()
 day_today = now.day
@@ -20,7 +19,6 @@ data = pandas.read_csv("birthdays.csv")
 
 for (index, row) in data.iterrows():
     letter_no = random.randint(1, 3)
-    print(letter_no)
     if row.month == month_today and row.day == day_today:
         with open(f"letter_templates/letter_{letter_no}.txt") as letter_file:
             letter = letter_file.read().replace("[NAME]", row.f_name)
