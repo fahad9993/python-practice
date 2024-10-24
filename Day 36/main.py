@@ -22,15 +22,13 @@ the_day_before = f"{datetime.now().date()-timedelta(2)}"
 # When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
 response = requests.get(url=STOCK_API_URL, params=stock_params)
 response.raise_for_status()
-data = response.json()
-print(data)
-yesterday_data = float(response.json()["Time Series (Daily)"][yesterday]["4. close"])
-the_day_before_data = float(response.json()["Time Series (Daily)"][the_day_before]["4. close"])
-print(yesterday_data)
-print(the_day_before_data)
-percent = (yesterday_data - the_day_before_data) / yesterday_data * 100
-print(percent)
-if percent >= 5 or percent <= -5:
+
+yesterday_closing_price = float(response.json()["Time Series (Daily)"][yesterday]["4. close"])
+the_day_before_yesterday_closing_price = float(response.json()["Time Series (Daily)"][the_day_before]["4. close"])
+
+percent = abs((yesterday_closing_price - the_day_before_yesterday_closing_price) / yesterday_closing_price * 100)
+
+if percent >= 5:
     print("Get News")
 
 ## STEP 2: Use https://newsapi.org
