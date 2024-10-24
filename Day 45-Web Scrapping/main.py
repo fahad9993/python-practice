@@ -24,7 +24,7 @@ for tr in articles_tr:
 
 for tr in articles_tr_score:
     span_score = tr.find(name="span", class_="score")
-    score = span_score.getText() if span_score else "No upvote yet"
+    score = int(span_score.getText().split()[0]) if span_score else 0
     articles_upvote.append(score)
 
 for index in range(len(article_links)):
