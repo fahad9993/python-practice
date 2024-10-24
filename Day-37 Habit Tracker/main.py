@@ -1,3 +1,4 @@
+import json
 import requests
 import os
 from dotenv import load_dotenv
@@ -38,10 +39,10 @@ headers = {
 
 post_a_pixel_endpoint = f"https://pixe.la/v1/users/{USERNAME}/graphs/graph1"
 
-pixel_params = {
-    "date": "20230111",
-    "quantity": "1",
-}
+with open("data.json") as data_file:
+    data = json.load(data_file)
 
-response = requests.post(url=post_a_pixel_endpoint, json=pixel_params, headers=headers)
-print(response.text)
+for row in data:
+    print(row)
+    # response = requests.post(url=post_a_pixel_endpoint, json=row, headers=headers)
+    # print(response.text)
