@@ -17,8 +17,7 @@ for movie in all_movies:
 
 all_movies_names.reverse()
 index = 1
-for movie in all_movies_names:
-    with open("movies.txt", mode="a") as file:
+with open("movies.txt", mode="w") as file:
+    for movie in all_movies_names:
         file.write(f"{index}. {movie}\n")
-
-    index += 1
+        index += 1
