@@ -37,7 +37,7 @@ headers = {
 # response = requests.post(url=graph_endpoint, json=graph_params, headers=headers)
 # print(response.text)
 
-post_a_pixel_endpoint = f"https://pixe.la/v1/users/{USERNAME}/graphs/graph1/20241024"
+post_a_pixel_endpoint = f"https://pixe.la/v1/users/{USERNAME}/graphs/graph1"
 
 # with open("data.json") as data_file:
 #     data = json.load(data_file)
@@ -46,6 +46,9 @@ post_a_pixel_endpoint = f"https://pixe.la/v1/users/{USERNAME}/graphs/graph1/2024
 #     print(row)
 #     # response = requests.post(url=post_a_pixel_endpoint, json=row, headers=headers)
 #     # print(response.text)
-data = {"quantity": "1"}
-response = requests.put(url=post_a_pixel_endpoint, json=data, headers=headers)
+data = {
+    "date": "20241026",
+    "quantity": "1"
+}
+response = requests.post(url=post_a_pixel_endpoint, json=data, headers=headers)
 print(response.text)
